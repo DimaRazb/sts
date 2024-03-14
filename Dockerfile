@@ -8,9 +8,9 @@ RUN go build -o sts-mate .
 EXPOSE 443
 
 # Comma-separated list of domains to serve policies for.
-ENV STS_DOMAIN "example.user"
+ENV STS_DOMAIN "it-zen.ca"
 # Source of the live STS policy to mirror.
-ENV MIRROR_STS_FROM "google.com"
+ENV MIRROR_STS_FROM "it-zen.ca"
 # If set, to "http", serves the policy on HTTP (instead of HTTPS). Good for
 # when you are behind an HTTPS-terminating reverse proxy.
 ENV HTTP "nohttp"
