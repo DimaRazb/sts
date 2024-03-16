@@ -8,14 +8,14 @@ RUN go build -o sts-mate .
 EXPOSE 443
 
 # Comma-separated list of domains to serve policies for.
-ENV STS_DOMAIN "it-zen.ca"
+ENV STS_DOMAIN "mta-sts.it-zen.ca"
 # Source of the live STS policy to mirror.
-ENV MIRROR_STS_FROM "it-zen.ca"
-# If set, to "http", serves the policy on HTTP (instead of HTTPS). Good for
+ENV MIRROR_STS_FROM "mta-sts.it-zen.ca"
+# If set to true, serves the policy on HTTP (instead of HTTPS). Good for
 # when you are behind an HTTPS-terminating reverse proxy.
-ENV HTTP "nohttp"
+ENV HTTP "false"
 # Usage:
 #  --domain is the domain to serve a policy for.
 #  --mirror_sts_from is the mail domain from which to proxy STS policies
 #  --domain is the domain for which to serve a policy (if limited)
-CMD ["sh", "-c", "./sts-mate --domain it-zen.ca --sts_mx itzen-ca0e.mail.protection.outlook.com --http=$HTTP"]
+CMD ["sh", "-c", "./sts-mate --domain $STS_DOMAIN --mirror_sts_from $MIRROR_STS_FROM --http=$HTTP"]
